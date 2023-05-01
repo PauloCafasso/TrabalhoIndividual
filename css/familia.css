@@ -1,0 +1,23 @@
+.titulo_familia{
+    display: flex;
+    width: fit-content;
+    float: left;
+}
+.container_navbar{
+    display: flex;
+    margin-top: -20px;
+}
+
+.container_imagem_familia{
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem_familia{
+    display: flex;
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+}

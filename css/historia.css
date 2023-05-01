@@ -1,0 +1,38 @@
+.titulo_historia{
+    display: flex;
+    margin-left: 2%;
+    margin-top: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(112, 112, 112);
+}
+.container_navbar{
+    display: flex;
+    justify-content: end;
+    
+}
+.navbar{
+    display: flex;
+    margin-top: -70px;
+    margin-right: 20px;
+}
+.container_texto_historia{
+    display: flex;
+    width: 200px;
+    margin-left: 10%;
+    margin-top: 10%;
+    justify-content: left;
+    float: left;
+}
+.texto_historia p{
+    display: flex;
+    font-size: large;
+    float: left;
+}
+.adolphe_historia{
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+    float: right;
+    height: 350px;
+    width: 200px
+}

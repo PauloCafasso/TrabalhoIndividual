@@ -1,0 +1,19 @@
+.container_navbar{
+    display: flex;
+    align-items: center;
+}
+.navbar li{
+    display: flex;
+    list-style: none;
+    align-content: space-evenly;
+    float: right;
+    flex-direction: row;
+    font-size: medium;
+    margin-top: 15px;
+}
+.homeIcon{
+    display: flex;
+    height: 50px;
+    width:  50px;
+    margin-top: -20px;
+}
