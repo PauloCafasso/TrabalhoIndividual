@@ -1,10 +1,10 @@
-.navbar .li_palhetas{
+.navbar .li_palheta{
     display: flex;
     list-style: none;
     align-self: flex-start;
 
 }
-.container_titulo_palhetas{
+.container_titulo_palheta{
     display: flex;
     color: rgb(112, 112, 112);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -13,22 +13,51 @@
 }
 .imagem_palheta{
     display: flex;
-    height: 250px;
-    width: 250px;
-    border: none;
-    
+    height: 200px;
+    width: 280px;
+}
+.container_palheta{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 270px;
+
+}
+.select_palheta{
+    display: flex;
+    border-radius: 100px;
+    border-style: dashed;
+    width:50px;
+    height: 35px;
+    text-align: center;
 }
 .inputs_palheta{
     display: flex;
-    justify-content: center;
-
+    border-radius: 100px;
+    border-style: dashed;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    flex-direction: column;
 }
-.container_inputs{
+.button_palheta{
     display: flex;
-    justify-content: end;
-    background-position: center;
+    border-radius: 100px;
+    border-style: dashed;
+    width: 150px;
+    margin-left: 57px;
 }
-.inputs_palheta select{
+.container_inputs_palheta{
     display: flex;
-    justify-items: center;
+    flex-direction: column;
+}
+.plotagem_palheta{
+    display: flex;
+    width: 300px;
+    height: fit-content;
+    float: right;
+    margin-top: 20px;
+    margin-right: 240px;
+}
+.p_palheta{
+    display: flex;
 }

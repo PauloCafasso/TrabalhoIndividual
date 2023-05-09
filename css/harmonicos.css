@@ -1,0 +1,66 @@
+.navbar .li_harmonico{
+    display: flex;
+    list-style: none;
+    align-self: flex-start;
+
+}
+.container_titulo_harmonico{
+    display: flex;
+    color: rgb(112, 112, 112);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    width: 250px;
+}
+
+.container_harmonico{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 270px;
+}
+.select_harmonico{
+    display: flex;
+    border-radius: 100px;
+    border-style: dashed;
+    width:50px;
+    height: 35px;
+    text-align: center;
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+.input_harmonico{
+    display: flex;
+    border-radius: 100px;
+    border-style: dashed;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+.container_imagem_harmonico{
+    display: flex;
+    width: 370px;
+    height: 300px;
+}
+.plotagem_harmonico{
+    display: flex;
+    width: 300px;
+    height: fit-content;
+    float: right;
+    margin-top: 20px;
+    margin-right: 200px;
+}
+.button_harmonico{
+    display: flex;
+    margin-top: 5px;
+    border-radius: 100px;
+    border-style: dashed;
+    width: 150px;
+    height: 30px;
+    margin-left: 30px;
+    align-items: center;
+}
+.p_harmonico{
+    display: flex;
+    margin-right: -100px;
+    margin-top: 8px;
+}
