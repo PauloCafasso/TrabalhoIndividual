@@ -1,0 +1,34 @@
+.navbar .li_palhetas{
+    display: flex;
+    list-style: none;
+    align-self: flex-start;
+
+}
+.container_titulo_palhetas{
+    display: flex;
+    color: rgb(112, 112, 112);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    width: 250px;
+}
+.imagem_palheta{
+    display: flex;
+    height: 250px;
+    width: 250px;
+    border: none;
+    
+}
+.inputs_palheta{
+    display: flex;
+    justify-content: center;
+
+}
+.container_inputs{
+    display: flex;
+    justify-content: end;
+    background-position: center;
+}
+.inputs_palheta select{
+    display: flex;
+    justify-items: center;
+}

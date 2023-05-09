@@ -6,6 +6,9 @@
 .container_navbar{
     display: flex;
     margin-top: -20px;
+    float: right;
+    z-index:10;
+    width: 350px;
 }
 
 .container_imagem_familia{
@@ -13,11 +16,15 @@
     float: left;
     justify-content: center;
     align-items: center;
+    height: 100px;
+    width: 100px;
+    margin-top: 200px;
+    z-index: 5;
 }
 
 .imagem_familia{
     display: flex;
     width: 700px;
     justify-content: center;
-    align-items: center;
+    margin-top: 200px;
 }

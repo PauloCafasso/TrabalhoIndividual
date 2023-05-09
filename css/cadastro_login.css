@@ -62,3 +62,13 @@
     float: right;
     height: 500px;
 }
+.select_cadastro{
+    display: flex;
+    border-radius: 100px;
+    border-style: dashed;
+    border-color: black;
+    width: 200px;
+    height: 25px;
+    font-weight: 300;
+    text-align: center;
+}
