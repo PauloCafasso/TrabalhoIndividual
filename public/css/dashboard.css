@@ -1,0 +1,37 @@
+.container_input_cadastroSax{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 300px;
+    justify-content: space-evenly;
+    height: 300px;
+    margin: 30px;
+    padding: 50px;
+    background-color: rgba(236, 182, 45, 0.711);
+    border-radius: 1px 100px 1px 100px ;
+}
+.container_input_cadastroSax input{
+    border-radius: 100px;
+    border-style: dashed;
+    height: 35px;
+    text-align: center;
+    font-size: large;
+}
+.container_input_cadastroSax select{
+    border-radius: 100px;
+    height: 35px;
+    text-align: center;
+    font-size: large;
+}
+.container_input_cadastroSax button{
+    border-radius: 100px;
+    border-style: dashed;
+    height: 35px;
+    text-align: center;
+    font-size: large;
+}
+.container_cadastroSax{
+    display: flex;
+    justify-content: center;
+    /* background-color: rgba(0, 0, 0, 0.273); */
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="li_palheta"> <a href="contato.html">Contato</a> </li>
+            <li class="li_palheta"> <a href="harmonicos.html">Harmonicos|</a> </li>
+            <li class="li_palheta"> <a href="historia.html">História|</a> </li>
+            <li class="li_palheta"> <a href="familia.html">Família|</a> </li>
+            <li class="li_palheta"> <a href="palhetas.html">|Palhetas|</a> </li>
+            <li class="li_contato"> <a href="dashboard.html">|DashBoards|</a> </li>
+            <li class="li_palheta"> <a href="index.html"><img class="homeIcon" src="img/homeIcon.png"></a> </li>
+        </ul>
+    </div>
+    <div class="container_cadastroSax">
+        <div class="container_input_cadastroSax">
+
+            <input type="text" placeholder="Apelido do sax" id="input_apelido">
+            <input type="text" placeholder="YYYY-MM-DD (fabricação)" id="input_fabricacao">
+            <input type="text" placeholder="Marca" id="input_marca">
+
+            <select class="select_cadastro" name="sax" id="input_sax">
+                <option value="soprano">Soprano</option>
+                <option value="alto">Alto</option>
+                <option value="tenor">Tenor</option>
+                <option value="barito">Baritono</option>
+                <option value="baixo">Baixo</option>
+            </select>
+
+            <button onclick="cadastreSax()">Cadastre um novo Saxofone</button>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastreSax() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var tipoVar = input_sax.value;
+        var apelidoVar = input_apelido.value;
+        var anoFabricacaoVar = input_fabricacao.value;
+        var marcaVar = input_marca.value;
+
+
+        if (tipoVar == "" || apelidoVar == "" || anoFabricacaoVar == "" || marcaVar == "") {
+            // cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(erro preencha os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+
+        // Enviando o valor da nova input
+        fetch("/sax/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/sax.js
+                tipoServer: tipoVar,
+                apelidoServer: apelidoVar,
+                anoFabricacaoServer: anoFabricacaoVar,
+                marcaServer: marcaVar
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                // setTimeout(() => {
+                //     window.location = "./login.html";
+                // }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+
+    }
+
+    function aguardar() {
+        var divAguardar = document.getElementById("div_aguardar");
+        // divAguardar.style.display = "flex";
+
+    }
+    function finalizarAguardar() {
+        var divAguardar = document.getElementById("div_aguardar");
+        // divAguardar.style.display = "none";
+
+        var divErrosLogin = document.getElementById("div_erros_login");
+        if (texto) {
+            // divErrosLogin.style.display = "flex";
+            divErrosLogin.innerHTML = texto;
+        }
+    }
+</script>

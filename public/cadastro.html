@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro_login.css">
+</head>
+
+<body>
+    <div class="container_full_body">
+
+        <div class="sax1"><img src="img/saxIcon_1.png"></div>
+
+        <div class="container_container_cadastro">
+            <div class="container_geral_cadastro">
+                <div class="titulo_cadastro">
+                    <h1>Cadastre-se</h1>
+                </div>
+                <div class="container_inputs_cadastro">
+                    <input class="input_cadastro" type="text" id="input_nome" placeholder="Nome">
+                    <input class="input_cadastro" type="text" id="input_sobrenome" placeholder="Sobrenome">
+                    <input class="input_cadastro" type="date" id="input_nascimento" placeholder="Data de Nascimento">
+
+                    <select class="select_cadastro" name="sexo" id="input_sexo">
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
+                        <option value="o">Outro</option>
+                    </select> <br>
+
+                    <!-- <select class="select_cadastro" name="sax" id="input_sax">
+                        <option value="soprano">Soprano</option>
+                        <option value="alto">Alto</option>
+                        <option value="tenor">Tenor</option>
+                        <option value="barito">Baritono</option>
+                        <option value="baixo">Baixo</option>
+                    </select> -->
+
+                    <input class="input_cadastro" type="text" id="input_email" placeholder="Email">
+                    <input class="input_cadastro" type="password" id="input_senha" placeholder="Senha">
+                    <input class="input_cadastro" type="password" id="input_senha_confirme" placeholder="Confirme Senha">
+                </div>
+                <div class="container_button_cadastro">
+                  <button class="button_cadastro" onclick="cadastrar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sax2"><img src="img/saxIcon_2.png"></div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = input_nome.value;
+        var sobrenomeVar = input_sobrenome.value;
+        var dtNascVar = input_nascimento.value;
+        var sexoVar = input_sexo.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = input_senha_confirme.value;
+
+        if (nomeVar == "" || sobrenomeVar == "" ||dtNascVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            // cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(erro preencha os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                sobrenomeServer: sobrenomeVar,
+                dtNascServer: dtNascVar,
+                sexoServer: sexoVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "./login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+
+    }
+
+    function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    // divAguardar.style.display = "flex";
+
+}
+function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+    // divAguardar.style.display = "none";
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+    if (texto) {
+        // divErrosLogin.style.display = "flex";
+        divErrosLogin.innerHTML = texto;
+    }
+    location.href = "login.html";
+}
+</script>

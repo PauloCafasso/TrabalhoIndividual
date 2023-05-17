@@ -1,7 +1,7 @@
-create database SAXoBLOG;
+create database if not exists SAXoBLOG;
 use SAXoBLOG;
 
-create table usuario(
+create table if not exists usuario(
 idUsuario int auto_increment primary key,
 nome varchar(45),
 sobrenome varchar(45),
@@ -10,15 +10,17 @@ sexo char(1),
 email varchar(45),
 senha char(8)
 );
-create table saxofone(
+create table if not exists saxofone(
 idSax int auto_increment,
+saxTipo varchar(45),
 apelido varchar(45),
 anoFabricacao date,
 marca varchar(45),
-tipo varchar(45),
 fkUsuario int,
 constraint foreign key (fkUsuario) references usuario(idUsuario),
 constraint primary key (idSax, fkUsuario)
 );
 
+select * from usuario;	
+select*from saxofone;
 select*from usuario join saxofone on idUsuario=fkUsuario;

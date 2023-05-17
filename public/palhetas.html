@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Palhetas</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/palhetas.css">
+</head>
+
+<body>
+    <div class="container_navbar_palheta">
+        <div class="navbar">
+            <ul>
+                <li class="li_palheta"> <a href="contato.html">Contato</a> </li>
+                <li class="li_palheta"> <a href="harmonicos.html">Harmonicos|</a> </li>
+                <li class="li_palheta"> <a href="historia.html">História|</a> </li>
+                <li class="li_palheta"> <a href="familia.html">Família|</a> </li>
+                <li class="li_palheta"> <a href="palhetas.html">|Palhetas|</a> </li>
+                <li class="li_contato"> <a href="dashboard.html">|DashBoards|</a> </li>
+                <li class="li_palheta"> <a href="index.html"><img class="homeIcon"
+                            src="img/homeIcon.png"></a> </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container_titulo_palheta">
+        <h1>Análise de Palhetas</h1>
+    </div>
+    <div class="container_palheta">
+        <div class="container_inputs_palheta">
+            <input class="inputs_palheta" type="number" id="input_qtd_palheta" placeholder="Quantidade de Palhetas">
+            <br>
+            <input class="inputs_palheta" type="number" id="input_durabilidade_palheta"
+                placeholder="Durabilidade Individual (semanas)"> <br>
+            <button class="button_palheta" onclick="plotar_palheta()">Análise Organizacional</button>
+        </div>
+    </div>
+
+    <div class="plotagem_palheta" id="div_plota_palheta">
+       
+    </div>
+    <p class="p_palheta" id="p_palheta"></p>
+    <!-- <img src="img/palheta_sax_png.png" style="width:60px ;height:100px ;"> -->
+    <img class="imagem_palheta" src="img/reedFan.png" >
+</body>
+
+</html>
+
+<script>
+    function plotar_palheta(){
+        var qtdPalhetas = Number(input_qtd_palheta.value);
+        var durabilidade = Number(input_durabilidade_palheta.value);
+        var tempoDuravelSemana = qtdPalhetas * durabilidade ;
+        var tempoDuravelMes = tempoDuravelSemana/4 ;
+        for(contaPalheta=0 ; contaPalheta < qtdPalhetas ; contaPalheta++ ){
+            div_plota_palheta.innerHTML+=`<img src="img/palheta_sax_png.png" style="width:60px ;height:100px ;">`
+            if(contaPalheta+1 % 5 == 0){
+                div_plota_palheta.innerHTML+=`<br><br>`
+            }
+        }
+        p_palheta.innerHTML=`Levando em consideração a quantidade de palhetas disponíveis e sua durabilidade, 
+        você deve ter cerca de ${tempoDuravelSemana} semanas ou ${tempoDuravelMes} meses antes de sua próxima compra de palhetas.`
+    }
+</script>
