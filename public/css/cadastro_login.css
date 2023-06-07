@@ -72,3 +72,6 @@
     font-weight: 300;
     text-align: center;
 }
+.container_geral_cadastro a{
+    text-decoration: none;
+}

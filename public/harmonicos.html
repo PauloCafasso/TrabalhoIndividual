@@ -20,8 +20,7 @@
                 <li class="li_harmonico"> <a href="familia.html">Família|</a> </li>
                 <li class="li_harmonico"> <a href="palhetas.html">|Palhetas|</a> </li>
                 <li class="li_contato"> <a href="dashboard.html">|DashBoards|</a> </li>
-                <li class="li_harmonico"> <a href="index.html"><img class="homeIcon"
-                            src="img/homeIcon.png"></a> </li>
+                <li class="li_harmonico"> <a href="index.html"><img class="homeIcon" src="img/homeIcon.png"></a> </li>
             </ul>
         </div>
     </div>
@@ -30,26 +29,37 @@
         <h1>Calculadora de Harmônicos</h1>
     </div>
     <div class="container_harmonico">
-       <p class="p_harmonico"> Nota Real: </p>
+        <p class="p_harmonico"> Nota Real: </p>
         <div class="inputs_harmonico">
-                <select class="select_harmonico" name="notas" id="select_notas">
-                <option class="option_harmonico" value="do">Dó</option>
-                <option class="option_harmonico" value="re">Ré</option>
-                <option class="option_harmonico" value="mi">Mi</option>
-                <option class="option_harmonico" value="fa">Fá</option>
-                <option class="option_harmonico" value="sol">Sol</option>
-                <option class="option_harmonico" value="la">Lá</option>
-                <option class="option_harmonico" value="si">Si</option>
+            <select class="select_harmonico" name="notas" id="select_notas">
+                <option class="option_harmonico" value="C">Dó</option>
+                <option class="option_harmonico" value="D">Ré</option>
+                <option class="option_harmonico" value="E">Mi</option>
+                <option class="option_harmonico" value="F">Fá</option>
+                <option class="option_harmonico" value="G">Sol</option>
+                <option class="option_harmonico" value="A">Lá</option>
+                <option class="option_harmonico" value="B">Si</option>
             </select> <br><br>
-            <input class="input_harmonico" type="number" id="input_harmonico" placeholder="insira Harmônico desejado">
+            <select class="select_harmonico2" name="notas" id="select_harmonico" style="width: 70px;">
+                <option class="option_harmonico" value="1">Primeiro</option>
+                <option class="option_harmonico" value="2">Segundo</option>
+                <option class="option_harmonico" value="3">Terceiro</option>
+                <option class="option_harmonico" value="4">Quarto</option>
+                <option class="option_harmonico" value="5">Quinto</option>
+                <option class="option_harmonico" value="6">Sexto</option>
+                <option class="option_harmonico" value="7">Sétimo</option>
+                <option class="option_harmonico" value="8">Oitavo</option>
+                <option class="option_harmonico" value="9">Nono</option>
+                <option class="option_harmonico" value="10">Décimo</option>
+            </select>
+            <!-- <input class="input_harmonico" type="number" id="input_harmonico" placeholder="insira Harmônico desejado"> -->
             <button class="button_harmonico" onclick="plotar_harmonico()"> Calcular Harmônico</button>
         </div>
     </div>
 
 
     <div class="plotagem_harmonico" id="div_plotagem_harmonico">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dignissimos alias quod modi nobis beatae
-        praesentium pariatur, doloribus quo tempore odit ipsa cupiditate rerum ullam sequi. Eum laborum repudiandae est.
+    
     </div>
 
 
@@ -60,3 +70,70 @@
 </body>
 
 </html>
+
+<script>
+
+    var A = ["la", "la", "mi", "la", "dó#", "mi", "sol", "la", "si", "do"];
+    var B = ["si", "si", "fa#", "si", "re#", "fa#", "la", "si", "do", "re"];
+    var C = ["dó", "dó", "sol", "dó", "mi", "sol", "sib", "do", "re", "mi"];
+    var D = ["re", "re", "la", "re", "fa#", "la", "do", "re", "mi", "fa"];
+    var E = ["mi", "mi", "si", "mi", "sol#", "si", "re", "mi", "fa", "sol"];
+    var F = ["fa", "fa", "dó", "fa", "la", "dó", "mi", "fa", "sol", "la"];
+    var G = ["sol", "sol", "re", "sol", "si", "re", "fa", "sol", "la", "si"];
+
+    function plotar_harmonico() {
+        var tonalidade = select_notas.value;
+        var harmonico = select_harmonico.value;
+
+        if (tonalidade == A) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = A[posicao]
+                }
+            }
+        } else if (tonalidade == B) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = B[posicao]
+                }
+            }
+        } else if (tonalidade == C) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = C[posicao]
+                }
+            }
+        } else if (tonalidade == D) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = D[posicao]
+                }
+            }
+        } else if (tonalidade == E) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = E[posicao]
+                }
+            }
+        } else if (tonalidade == F) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = F[posicao]
+                }
+            }
+        } else if (tonalidade == G) {
+            for (var posicao = 0; posicao < harmonico; posicao++) {
+                if (posicao == harmonico) {
+                    div_plotagem_harmonico.innerHTML = G[posicao]
+                }
+            }
+        }
+    }
+</script>
+<!-- else if(){
+    for(var posicao = 0 ; posicao < harmonico ; posicao++){
+         if(posicao == harmonico){
+                    div_plotagem_harmonico.innerHTML = [posicao]
+                }
+    }
+} -->

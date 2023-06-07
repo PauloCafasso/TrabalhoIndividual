@@ -16,7 +16,7 @@ function cadastrar(tipo, apelido, anoFabricacao, marca) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO saxofone (saxTipo, apelido, anoFabricacao, marca) VALUES ('${tipo}', '${apelido}', '${anoFabricacao}', '${marca}');
+        INSERT INTO saxofone (fkUsuario, tipo, apelido, anoFabricacao, marca) VALUES ('1','${tipo}', '${apelido}', '${anoFabricacao}', '${marca}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

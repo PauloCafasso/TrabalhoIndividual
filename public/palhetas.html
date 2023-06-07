@@ -20,8 +20,7 @@
                 <li class="li_palheta"> <a href="familia.html">Família|</a> </li>
                 <li class="li_palheta"> <a href="palhetas.html">|Palhetas|</a> </li>
                 <li class="li_contato"> <a href="dashboard.html">|DashBoards|</a> </li>
-                <li class="li_palheta"> <a href="index.html"><img class="homeIcon"
-                            src="img/homeIcon.png"></a> </li>
+                <li class="li_palheta"> <a href="index.html"><img class="homeIcon" src="img/homeIcon.png"></a> </li>
             </ul>
         </div>
     </div>
@@ -40,28 +39,28 @@
     </div>
 
     <div class="plotagem_palheta" id="div_plota_palheta">
-       
+
     </div>
     <p class="p_palheta" id="p_palheta"></p>
     <!-- <img src="img/palheta_sax_png.png" style="width:60px ;height:100px ;"> -->
-    <img class="imagem_palheta" src="img/reedFan.png" >
+    <img class="imagem_palheta" src="img/reedFan.png">
 </body>
 
 </html>
 
 <script>
-    function plotar_palheta(){
+    function plotar_palheta() {
         var qtdPalhetas = Number(input_qtd_palheta.value);
         var durabilidade = Number(input_durabilidade_palheta.value);
-        var tempoDuravelSemana = qtdPalhetas * durabilidade ;
-        var tempoDuravelMes = tempoDuravelSemana/4 ;
-        for(contaPalheta=0 ; contaPalheta < qtdPalhetas ; contaPalheta++ ){
-            div_plota_palheta.innerHTML+=`<img src="img/palheta_sax_png.png" style="width:60px ;height:100px ;">`
-            if(contaPalheta+1 % 5 == 0){
-                div_plota_palheta.innerHTML+=`<br><br>`
+        var tempoDuravelSemana = qtdPalhetas * durabilidade;
+        var tempoDuravelMes = tempoDuravelSemana / 4;
+        for (contaPalheta = 0; contaPalheta < qtdPalhetas; contaPalheta++) {
+            div_plota_palheta.innerHTML += `<img src="img/palheta_sax_png.png" style="width:60px ;height:100px ;">`
+            if (contaPalheta + 1 % 5 == 0) {
+                div_plota_palheta.innerHTML += `<br><br>`
             }
         }
-        p_palheta.innerHTML=`Levando em consideração a quantidade de palhetas disponíveis e sua durabilidade, 
+        p_palheta.innerHTML = `Levando em consideração a quantidade de palhetas disponíveis e sua durabilidade, 
         você deve ter cerca de ${tempoDuravelSemana} semanas ou ${tempoDuravelMes} meses antes de sua próxima compra de palhetas.`
     }
 </script>
