@@ -41,19 +41,19 @@
                 <option class="option_harmonico" value="B">Si</option>
             </select> <br><br>
             <select class="select_harmonico2" name="notas" id="select_harmonico" style="width: 70px;">
-                <option class="option_harmonico" value="1">Primeiro</option>
-                <option class="option_harmonico" value="2">Segundo</option>
-                <option class="option_harmonico" value="3">Terceiro</option>
-                <option class="option_harmonico" value="4">Quarto</option>
-                <option class="option_harmonico" value="5">Quinto</option>
-                <option class="option_harmonico" value="6">Sexto</option>
-                <option class="option_harmonico" value="7">Sétimo</option>
-                <option class="option_harmonico" value="8">Oitavo</option>
-                <option class="option_harmonico" value="9">Nono</option>
-                <option class="option_harmonico" value="10">Décimo</option>
+                <option class="option_harmonico" value="0">Primeiro</option>
+                <option class="option_harmonico" value="1">Segundo</option>
+                <option class="option_harmonico" value="2">Terceiro</option>
+                <option class="option_harmonico" value="3">Quarto</option>
+                <option class="option_harmonico" value="4">Quinto</option>
+                <option class="option_harmonico" value="5">Sexto</option>
+                <option class="option_harmonico" value="6">Sétimo</option>
+                <option class="option_harmonico" value="7">Oitavo</option>
+                <option class="option_harmonico" value="8">Nono</option>
+                <option class="option_harmonico" value="9">Décimo</option>
             </select>
             <!-- <input class="input_harmonico" type="number" id="input_harmonico" placeholder="insira Harmônico desejado"> -->
-            <button class="button_harmonico" onclick="plotar_harmonico()"> Calcular Harmônico</button>
+            <button class="button_harmonico" onclick="plotar_harmonico()"> Calcular Harmônico </button>
         </div>
     </div>
 
@@ -87,55 +87,63 @@
 
         var posicao = 0;
 
-        if (tonalidade == A) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        if (tonalidade == "A") {
+
+            for (posicao ; posicao < A.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = A[posicao]
                 }
             }
-        } else if (tonalidade == B) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "B") {
+
+            for (posicao ; posicao < B.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = B[posicao]
                 }
             }
-        } else if (tonalidade == C) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "C") {
+
+            for (posicao ; posicao < C.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = C[posicao]
                 }
             }
-        } else if (tonalidade == D) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "D") {
+
+            for (posicao ; posicao < D.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = D[posicao]
                 }
             }
-        } else if (tonalidade == E) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "E") {
+
+            for (posicao ; posicao < E.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = E[posicao]
                 }
             }
-        } else if (tonalidade == F) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "F") {
+
+            for (posicao ; posicao < F.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = F[posicao]
                 }
             }
-        } else if (tonalidade == G) {
-            for ( ; posicao < harmonico; posicao++) {
+
+        } else if (tonalidade == "G") {
+
+            for (posicao ; posicao < G.length; posicao++) {
                 if (posicao == harmonico) {
                     div_plotagem_harmonico.innerHTML = G[posicao]
                 }
             }
+
         }
     }
 </script>
-<!-- else if(){
-    for(var posicao = 0 ; posicao < harmonico ; posicao++){
-         if(posicao == harmonico){
-                    div_plotagem_harmonico.innerHTML = [posicao]
-                }
-    }
-} -->
