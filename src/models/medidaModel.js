@@ -73,7 +73,7 @@ function buscarMedidasEmTempoReal2(tipo) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
     buscarUltimasMedidas2,
+    buscarMedidasEmTempoReal,
     buscarMedidasEmTempoReal2
 }

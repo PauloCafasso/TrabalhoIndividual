@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
     height: 100px;
-    width: 100px;
+    width: 1000px;
     margin-top: 200px;
     z-index: 5;
 }
@@ -27,4 +27,15 @@
     width: 700px;
     justify-content: center;
     margin-top: 200px;
+    margin-bottom: 400px;
+}
+
+.txtFamilia{
+    display: flex;
+    width:100%;
+}
+.txtFamilia p{
+    display: flex;
+    justify-content: center;
+    width: 30%;
 }

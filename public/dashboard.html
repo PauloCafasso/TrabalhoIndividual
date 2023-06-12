@@ -11,7 +11,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> 
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script> 
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <!-- <script src="http://www.chartjs.org/samples/latest/utils.js"></script> -->
 
 </head>
 
@@ -138,6 +138,301 @@
 
 //  DASHBOARDS
 
+// let proximaAtualizacao;
+
+//     window.onload = obterDadosGraficos();
+
+//     function obterDadosGraficos() {
+//         obterDadosGrafico(1)
+//     }
+
+//     function obterDadosGrafico(sexo) {
+
+//         // alterarTitulo(sexo)
+
+//         if (proximaAtualizacao != undefined) {
+//             clearTimeout(proximaAtualizacao);
+//         }
+
+//         fetch(`/medidas/ultimas/${sexo}`, { cache: 'no-store' }).then(function (response) {
+//             if (response.ok) {
+//                 response.json().then(function (resposta) {
+//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                     resposta.reverse();
+
+//                     plotarGrafico(resposta, sexo);
+//                 });
+//             } else {
+//                 console.error('Nenhum dado encontrado ou erro na API');
+//             }
+//         })
+//             .catch(function (error) {
+//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//             });
+//     }
+
+//     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+//     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+//     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+//     function plotarGrafico(resposta, sexo) {
+
+//         console.log('iniciando plotagem do gráfico...');
+
+//         // Criando estrutura para plotar gráfico - labels
+//         let labels = [];
+
+//         // Criando estrutura para plotar gráfico - dados
+//         let dados = {
+//             labels: labels,
+//             datasets: [{
+//                 label: 'quantidade',
+//                 data: [],
+//                 fill: false,
+//                 backgroundColor: 'rgb(1000, 150, 150)',
+//                 tension: 0.1
+//             },
+//           ]
+//         };
+
+//         console.log('----------------------------------------------')
+//         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+//         console.log(resposta)
+
+//         // Inserindo valores recebidos em estrutura para plotar o gráfico
+//         for (i = 0; i < resposta.length; i++) {
+//             var registro = resposta[i];
+//             labels.push(registro.sexo);
+//             dados.datasets[0].data.push(registro.quantidade);
+//         }
+
+//         console.log('----------------------------------------------')
+//         console.log('O gráfico será plotado com os respectivos valores:')
+//         console.log('Labels:')
+//         console.log(labels)
+//         console.log('Dados:')
+//         console.log(dados.datasets)
+//         console.log('----------------------------------------------')
+
+//         // Criando estrutura para plotar gráfico - config
+//         const config = {
+//             type: 'pie',
+//             data: dados,
+//         };
+
+//         // Adicionando gráfico criado em div na tela
+//         let myChart = new Chart(
+//             document.getElementById(`myChart`),
+//             config
+//         );
+
+//         setTimeout(() => atualizarGrafico(sexo, dados, myChart), 2000);
+//     }
+
+
+//     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+//     // buscando a última medida inserida em tabela contendo as capturas, 
+
+//     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     //     Para ajustar o "select", ajuste o comando sql em src/models
+//     function atualizarGrafico(sexo, dados, myChart) {
+
+
+
+//         fetch(`/medidas/tempo-real/${sexo}`, { cache: 'no-store' }).then(function (response) {
+//             if (response.ok) {
+//                 response.json().then(function (novoRegistro) {
+
+//                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+//                     console.log(`Dados atuais do gráfico:`);
+//                     console.log(dados);
+
+//                     let avisoCaptura = document.getElementById(`avisoCaptura${sexo}`)
+//                     avisoCaptura.innerHTML = ""
+
+
+//                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+//                         console.log("---------------------------------------------------------------")
+//                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+//                         avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+//                         console.log("Horário do novo dado capturado:")
+//                         console.log(novoRegistro[0].momento_grafico)
+//                         console.log("Horário do último dado capturado:")
+//                         console.log(dados.labels[dados.labels.length - 1])
+//                         console.log("---------------------------------------------------------------")
+//                     } else {
+//                         // tirando e colocando valores no gráfico
+//                         dados.labels.shift(); // apagar o primeiro
+//                         dados.labels.push(novoRegistro[0].sexo_grafico); // incluir um novo momento
+
+//                         myChart.update();
+//                     }
+
+//                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+//                     proximaAtualizacao = setTimeout(() => atualizarGrafico(sexo, dados, myChart), 2000);
+//                 });
+//             } else {
+//                 console.error('Nenhum dado encontrado ou erro na API');
+//                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+//                 proximaAtualizacao = setTimeout(() => atualizarGrafico(sexo, dados, myChart), 2000);
+//             }
+//         })
+//             .catch(function (error) {
+//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//             });
+
+//     }
+
+
+
+//  DASHBOARD2 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    // let proximaAtualizacao2;
+
+    // window.onload = obterDadosGraficos2();
+
+    // function obterDadosGraficos2() {
+    //     obterDadosGrafico2(1)
+    // }
+
+    // function obterDadosGrafico2(tipo) {
+
+    //     // alterarTitulo(tipo)
+
+    //     if (proximaAtualizacao2 != undefined) {
+    //         clearTimeout(proximaAtualizacao2);
+    //     }
+
+    //     fetch(`/medidas/ultimas2/${tipo}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    //                 resposta.reverse();
+
+    //                 plotarGrafico2(resposta, tipo);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    // function plotarGrafico2(resposta, tipo) {
+
+    //     console.log('iniciando plotagem do gráfico...');
+
+    //     // Criando estrutura para plotar gráfico - labels
+    //     let labels2 = [];
+
+    //     // Criando estrutura para plotar gráfico - dados
+    //     let dados2 = {
+    //         labels: labels2,
+    //         datasets: [{
+    //             label: 'Tipos',
+    //             data: [],
+    //             fill: false,
+    //             backgroundColor: 'rgb(1000, 150, 150)',
+    //             tension: 0.1
+    //         },
+    //       ]
+    //     };
+
+    //     console.log('----------------------------------------------')
+    //     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    //     console.log(resposta)
+
+    //     // Inserindo valores recebidos em estrutura para plotar o gráfico
+    //     for (i = 0; i < resposta.length; i++) {
+    //         var registro = resposta[i];
+    //         labels2.push(registro.tipo);
+    //         dados2.datasets[0].data.push(registro.Tipos);
+    //     }
+
+    //     console.log('----------------------------------------------')
+    //     console.log('O gráfico será plotado com os respectivos valores:')
+    //     console.log('Labels:')
+    //     console.log(labels2)
+    //     console.log('Dados:')
+    //     console.log(dados2.datasets)
+    //     console.log('----------------------------------------------')
+
+    //     // Criando estrutura para plotar gráfico - config
+    //     const config = {
+    //         type: 'pie',
+    //         data: dados2,
+    //     };
+
+    //     // Adicionando gráfico criado em div na tela
+    //     let myChart2 = new Chart(
+    //         document.getElementById(`myChart2`),
+    //         config
+    //     );
+
+    //     setTimeout(() => atualizarGrafico2(tipo, dados2, myChart2), 2000);
+    // }
+
+
+    // // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // // buscando a última medida inserida em tabela contendo as capturas, 
+
+    // //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    // //     Para ajustar o "select", ajuste o comando sql em src/models
+    // function atualizarGrafico2(tipo, dados2, myChart2) {
+
+
+
+    //     fetch(`/medidas/tempo-real2/${tipo}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                 console.log(`Dados atuais do gráfico:`);
+    //                 console.log(dados2);
+
+    //                 let avisoCaptura = document.getElementById(`avisoCaptura${tipo}`)
+
+
+    //                 if (novoRegistro[0].momento_grafico == dados2.labels2[dados2.labels2.length - 1]) {
+    //                     console.log("---------------------------------------------------------------")
+    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+    //                     console.log("Horário do novo dado capturado:")
+    //                     console.log(novoRegistro[0].momento_grafico)
+    //                     console.log("Horário do último dado capturado:")
+    //                     console.log(dados2.labels2[dados2.labels2.length - 1])
+    //                     console.log("---------------------------------------------------------------")
+    //                 } else {
+    //                     // tirando e colocando valores no gráfico
+    //                     dados2.labels2.shift(); // apagar o primeiro
+    //                     dados2.labels2.push(novoRegistro[0].tipo_grafico); // incluir um novo momento
+
+    //                     myChart2.update();
+    //                 }
+
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao2 = setTimeout(() => atualizarGrafico2(tipo, dados2, myChart2), 2000);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //             proximaAtualizacao2 = setTimeout(() => atualizarGrafico2(tipo, dados2, myChart2), 2000);
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+
+    // }
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 let proximaAtualizacao;
 
     window.onload = obterDadosGraficos();
@@ -246,14 +541,14 @@ let proximaAtualizacao;
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${sexo}`)
-                    avisoCaptura.innerHTML = ""
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${sexo}`)
+                    // avisoCaptura.innerHTML = ""
 
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].momento_grafico)
                         console.log("Horário do último dado capturado:")
@@ -274,153 +569,6 @@ let proximaAtualizacao;
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(sexo, dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-
-
-
-//  DASHBOARD2 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-    let proximaAtualizacao2;
-
-    window.onload = obterDadosGraficos2();
-
-    function obterDadosGraficos2() {
-        obterDadosGrafico2(1)
-    }
-
-    function obterDadosGrafico2(tipo) {
-
-        // alterarTitulo(tipo)
-
-        if (proximaAtualizacao2 != undefined) {
-            clearTimeout(proximaAtualizacao2);
-        }
-
-        fetch(`/medidas/ultimas2/${tipo}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico2(resposta, tipo);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico2(resposta, tipo) {
-
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Tipos',
-                data: [],
-                fill: false,
-                backgroundColor: 'rgb(1000, 150, 150)',
-                tension: 0.1
-            },
-          ]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.tipo);
-            dados.datasets[0].data.push(registro.Tipos);
-        }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'pie',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart2 = new Chart(
-            document.getElementById(`myChart2`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico2(tipo, dados, myChart2), 2000);
-    }
-
-
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico2(tipo, dados, myChart2) {
-
-
-
-        fetch(`/medidas/tempo-real2/${tipo}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${tipo}`)
-
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].tipo_grafico); // incluir um novo momento
-
-                        myChart2.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao2 = setTimeout(() => atualizarGrafico2(tipo, dados, myChart2), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao2 = setTimeout(() => atualizarGrafico2(tipo, dados, myChart2), 2000);
             }
         })
             .catch(function (error) {
