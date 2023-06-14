@@ -49,7 +49,7 @@
 .button_index_cadastro{
     display: flex;
     align-self: flex-end;
-    margin-left: -350px;
+    margin-left: 50px;
     margin-bottom: 30px;
     text-decoration: none;
 }
